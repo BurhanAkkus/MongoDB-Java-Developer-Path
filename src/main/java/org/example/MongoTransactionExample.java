@@ -30,8 +30,8 @@ public class MongoTransactionExample {
                 Document receiverAccount = bankCollection.find(query2).first();
                 System.out.println("Current Balance of the Receiver: " + receiverAccount.getLong("balance"));
 
-                bankCollection.updateOne(query1,update1);
-                bankCollection.updateOne(query2,update2);
+                bankCollection.updateOne(clientSession,query1,update1);
+                bankCollection.updateOne(clientSession,query2,update2);
 
                 payerAccount = bankCollection.find(query1).first();
                 System.out.println("Current Balance of the Payer: " + payerAccount.getLong("balance"));
